@@ -28,11 +28,33 @@ def run_main():
 
     ur_controller = URController()
 
-    ur_controller.home_arm(10)
+    #ur_controller.home_arm(10)
 
     ee_pose = ur_controller.get_ee_pose()
 
+    ## Move Forward 10 centimeters
     new_ee_pose = [ee_pose[0], ee_pose[1]-0.1, ee_pose[2], ee_pose[3], ee_pose[4], ee_pose[5]]
+
+    ur_controller.move_ee(new_ee_pose, 5)
+
+    ee_pose = ur_controller.get_ee_pose()
+
+    ## Move Down 10 centimeters
+    new_ee_pose = [ee_pose[0], ee_pose[1], ee_pose[2]-0.1, ee_pose[3], ee_pose[4], ee_pose[5]]
+
+    ur_controller.move_ee(new_ee_pose, 5)
+
+    ee_pose = ur_controller.get_ee_pose()
+
+    ## Move Up 10 centimeters
+    new_ee_pose = [ee_pose[0], ee_pose[1], ee_pose[2]-0.1, ee_pose[3], ee_pose[4], ee_pose[5]]
+
+    ur_controller.move_ee(new_ee_pose, 5)
+
+    ee_pose = ur_controller.get_ee_pose()
+
+    ## Move Backward 10 centimeters
+    new_ee_pose = [ee_pose[0], ee_pose[1]+0.1, ee_pose[2], ee_pose[3], ee_pose[4], ee_pose[5]]
 
     ur_controller.move_ee(new_ee_pose, 5)
 
