@@ -32,9 +32,9 @@ def run_main():
 
     ee_pose = ur_controller.get_ee_pose()
 
-    new_ee_pose = [ee_pose[0], ee_pose[1]-0.01, ee_pos[2], ee_pos[3], ee_pos[4], ee_pos[5]]
+    new_ee_pose = [ee_pose[0], ee_pose[1]-0.1, ee_pose[2], ee_pose[3], ee_pose[4], ee_pose[5]]
 
-    mbz_controller.move_ee(new_ee_pos, 5)
+    ur_controller.move_ee(new_ee_pose, 5)
 
 
 if __name__ == '__main__':

@@ -20,7 +20,7 @@ class URController:
 
         self.tf_buffer = tf2_ros.Buffer()
         self.tf_listener = tf2_ros.TransformListener(self.tf_buffer)
-        self.ur5e_arm_pub = rospy.Publisher("/ur_driver/URScript", String, queue_size=10)
+        self.ur5e_arm_pub = rospy.Publisher("/ur_hardware_interface/script_command", String, queue_size=10)
 
     def home_arm(self, time=None):
         home_joint_angles = [90, -169, 150, -130, -90, 0]
@@ -153,11 +153,11 @@ class URController:
 
       return True
 
-    def get_current_arm_end_effector_position(self):
+    def get_ee_pose(self):
             rospy.sleep(1)
         #try:
             #self.tf_buffer.wait_for_transform('ur_arm_tool0', 'ur_arm_base', rospy.Time(0))
-            trans = self.tf_buffer.lookup_transform('ur_arm_base', 'ur_arm_tool0', rospy.Time(0))
+            trans = self.tf_buffer.lookup_transform('base', 'tool0_controller', rospy.Time(0))
             axis_angle = -utils.quat_to_axis_angle([trans.transform.rotation.x, trans.transform.rotation.y,
                                                     trans.transform.rotation.z, trans.transform.rotation.w])
 
