@@ -1,0 +1,7 @@
+data: |
+    def testmove():
+        zero_ftsensor()
+        force_mode(p[0.0,0.0,0.0,0.0,0.0,0.0], [1,0,0,0,0,1], [3,0,0,0,0,0], 2, [0.1,0.1,0.1,0.785,0.785,1.57])
+        sleep(20.0)
+        end_force_mode()
+    end
