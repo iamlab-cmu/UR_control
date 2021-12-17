@@ -28,9 +28,7 @@ def run_main():
 
     ur_controller = URController()
 
-    print(ur_controller.get_joints())
-
-    #ur_controller.home_arm(10)
+    ur_controller.home_arm(10)
 
     ee_pose = ur_controller.get_ee_pose()
 
@@ -59,6 +57,18 @@ def run_main():
     new_ee_pose = [ee_pose[0], ee_pose[1]+0.1, ee_pose[2], ee_pose[3], ee_pose[4], ee_pose[5]]
 
     ur_controller.move_ee(new_ee_pose, 5)
+
+    current_joints = ur_controller.get_joints()
+
+    current_joints[5] -= 90
+
+    ## Rotate the last joint -90 degrees
+    ur_controller.move_joints_in_degrees(current_joints)
+
+    current_joints[5] += 90
+
+    ## Rotate the last joint +90 degrees
+    ur_controller.move_joints_in_degrees(current_joints)
 
 
 if __name__ == '__main__':
