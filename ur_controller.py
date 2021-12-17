@@ -23,7 +23,7 @@ class URController:
         self.ur5e_arm_pub = rospy.Publisher("/ur_hardware_interface/script_command", String, queue_size=10)
 
     def home_arm(self, time=None):
-        home_joint_angles = [90, -169, 150, -130, -90, 0]
+        home_joint_angles = [90, -90, 90, -90, -90, 90]
         move_joints_string = String()
 
         if time is not None:
@@ -168,7 +168,7 @@ class URController:
         #     rospy.sleep(1)
         #     return None
 
-    def get_current_arm_joint_angles(self):
+    def get_joints(self):
         try:
             joint_state_msg = rospy.wait_for_message('/joint_states', JointState, 1)
             return [joint_state_msg.position[0] * 180 / math.pi, joint_state_msg.position[1] * 180 / math.pi, joint_state_msg.position[2] * 180 / math.pi,

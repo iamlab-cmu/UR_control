@@ -28,6 +28,8 @@ def run_main():
 
     ur_controller = URController()
 
+    print(ur_controller.get_joints())
+
     #ur_controller.home_arm(10)
 
     ee_pose = ur_controller.get_ee_pose()
@@ -47,7 +49,7 @@ def run_main():
     ee_pose = ur_controller.get_ee_pose()
 
     ## Move Up 10 centimeters
-    new_ee_pose = [ee_pose[0], ee_pose[1], ee_pose[2]-0.1, ee_pose[3], ee_pose[4], ee_pose[5]]
+    new_ee_pose = [ee_pose[0], ee_pose[1], ee_pose[2]+0.1, ee_pose[3], ee_pose[4], ee_pose[5]]
 
     ur_controller.move_ee(new_ee_pose, 5)
 
