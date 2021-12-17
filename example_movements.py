@@ -63,12 +63,12 @@ def run_main():
     current_joints[5] -= 90
 
     ## Rotate the last joint -90 degrees
-    ur_controller.move_joints_in_degrees(current_joints)
+    ur_controller.move_joints_in_degrees(current_joints, 3)
 
     current_joints[5] += 90
 
     ## Rotate the last joint +90 degrees
-    ur_controller.move_joints_in_degrees(current_joints)
+    ur_controller.move_joints_in_degrees(current_joints, 3)
 
 
 if __name__ == '__main__':
